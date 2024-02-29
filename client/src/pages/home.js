@@ -77,11 +77,11 @@ export default function Home() {
 
                 <section className="green-section section">
                     <span>In order to controll the consumption of vitamins and minerals, use our food diary.</span>
-                    <button className="hero-button text-black">Sign Up - it's Free!</button>
+                    <button className="text-black hero-button">Sign Up - it's Free!</button>
                 </section>
 
                 <section className="section" id="comment-section">
-                    <h1 className="caption mb-10">Reviews</h1>
+                    <h1 className="mb-10 caption">Reviews</h1>
                     <div className="comment-left">
                         <div className="comment">
                             <div className="comment-header">
