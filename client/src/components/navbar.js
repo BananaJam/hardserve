@@ -4,7 +4,7 @@ export default function Navbar() {
     return (
         <nav>
             <div className="logo-section">
-                <img src="/logo192.png" alt="logo" className="logo" />
+                <img src="/icons/logo.svg" alt="logo" className="logo" />
                 <h1><a href="/" className="logo-text">Ration</a></h1>
             </div>
             <ul className="links">
