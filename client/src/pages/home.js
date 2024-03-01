@@ -1,3 +1,6 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
+
 import "./home.css"
 import Rating from "../components/rating"
 import Navbar from '../components/navbar';
