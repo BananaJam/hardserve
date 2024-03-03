@@ -177,6 +177,9 @@
 }
 
 .comment {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
     box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.4);
     border-radius: 40px;
     padding: 30px;
@@ -202,8 +205,9 @@
 }
 
 .rating{
-    margin-left: auto;
-    margin-right: 25px
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
 }
 
 footer {
