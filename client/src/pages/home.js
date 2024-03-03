@@ -78,84 +78,85 @@ export default function Home() {
                     </div>
                 </section>
 
-            <section className="green-section section">
-                <span>In order to controll the consumption of vitamins and minerals, use our food diary.</span>
-                <button className="hero-button">Sign Up - it's Free!</button>
-            </section>
+                <section className="green-section section">
+                    <span>In order to controll the consumption of vitamins and minerals, use our food diary.</span>
+                    <button className="hero-button">Sign Up - it's Free!</button>
+                </section>
 
-            <section className="section" id="comment-section">
-                <h1 className="caption">Reviews</h1>
-                <div className="comment-left">
-                    <div className="comment">
-                        <div className="comment-header">
-                            <img src="/icons/avatar.png" alt="person" className="icon" />
-                            <h2>John Doe</h2>
+                <section className="section" id="comment-section">
+                    <h1 className="caption">Reviews</h1>
+                    <div className="comment-left">
+                        <div className="comment">
+                            <div className="comment-header">
+                                <img src="/icons/avatar.png" alt="person" className="icon" />
+                                <h2>John Doe</h2>
+                            </div>
                             <Rating rating={4} />
+                            <p>It's a great app. I've lost 10 pounds in 2 months.</p>
                         </div>
-                        <p>It's a great app. I've lost 10 pounds in 2 months.</p>
                     </div>
-                </div>
-                <div className="comment-right">
-                    <div className="comment">
-                        <div className="comment-header">
-                            <img src="/icons/avatar.png" alt="person" className="icon" />
-                            <h2>Dominik Taburetto</h2>
+                    <div className="comment-right">
+                        <div className="comment">
+                            <div className="comment-header">
+                                <img src="/icons/avatar.png" alt="person" className="icon" />
+                                <h2>Dominik Taburetto</h2>
+                            </div>
                             <Rating rating={3} />
+                            <p>It's a great app. I've lost 10 pounds in 2 months.</p>
                         </div>
-                        <p>It's a great app. I've lost 10 pounds in 2 months.</p>
                     </div>
-                </div>
-            </section>
+                </section>
 
-            <footer>
-                <div className="footer-top">
-                    <div className="footer-left">
+                <footer>
+                    <div className="footer-top">
+                        <div className="footer-left">
+                            <div className="footer-logo">
+                                <img src="/icons/logo.svg" alt="logo" />
+                                <h1>Ration</h1>
+                            </div>
+                            <h3>+34953495098</h3>
+                            <p>support@ration.agency</p>
+                        </div>
+                        <div className="footer-center">
+                            Quick links
+                            <ul>
+                                <li>Home</li>
+                                <li>Plans</li>
+                                <li>Recipes</li>
+                                <li>Blog</li>
+                            </ul>
+                        </div>
+
+                        <div className="footer-right">
+                            <h3>Subscribe to our newsletter</h3>
+                            <input type="text" placeholder="Enter your email" />
+                            <button><FontAwesomeIcon icon={faArrowRight} /></button>
+                        </div>
+                        
+                    </div>
+
+                    <hr />
+
+                    <div className="footer-bottom">
+                        <div className="footer-social">
+                            <div className="social-icon">
+                                <img src="/icons/instagram.svg" alt="instagram" />
+                            </div>
+                            <div className="social-icon">
+                                <img src="/icons/linkedin.svg" alt="instagram" />
+                            </div>
+                            <div className="social-icon">
+                                <img src="/icons/twitter.svg" alt="instagram" />
+                            </div>
+                        </div>
                         <div className="footer-logo">
-                            <img src="/icons/logo.svg" alt="logo" />
-                            <h1>Ration</h1>
-                        </div>
-                        <h3>+34953495098</h3>
-                        <p>support@ration.agency</p>
+                                <img src="/icons/logo.svg" alt="logo" />
+                                <h1>Ration</h1>
+                            </div>
+                        <p>© 2021 Ration. All rights reserved.</p>
                     </div>
-                    <div className="footer-center">
-                        Quick links
-                        <ul>
-                            <li>Home</li>
-                            <li>Plans</li>
-                            <li>Recipes</li>
-                            <li>Blog</li>
-                        </ul>
-                    </div>
-
-                    <div className="footer-right">
-                        <h3>Subscribe to our newsletter</h3>
-                        <input type="text" placeholder="Enter your email" />
-                        <button><FontAwesomeIcon icon={faArrowRight} /></button>
-                    </div>
-                    
-                </div>
-
-                <hr />
-
-                <div className="footer-bottom">
-                    <div className="footer-social">
-                        <div className="social-icon">
-                            <img src="/icons/instagram.svg" alt="instagram" />
-                        </div>
-                        <div className="social-icon">
-                            <img src="/icons/linkedin.svg" alt="instagram" />
-                        </div>
-                        <div className="social-icon">
-                            <img src="/icons/twitter.svg" alt="instagram" />
-                        </div>
-                    </div>
-                    <div className="footer-logo">
-                            <img src="/icons/logo.svg" alt="logo" />
-                            <h1>Ration</h1>
-                        </div>
-                    <p>© 2021 Ration. All rights reserved.</p>
-                </div>
-            </footer>
-        </div>
+                </footer>
+            </div>
+        </>
     );
 }
