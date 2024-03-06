@@ -23,3 +23,71 @@ client/.env.production.local
 client/npm-debug.log*
 client/yarn-debug.log*
 client/yarn-error.log*
+
+# Python
+**/*.py[cod]
+**/__pycache__/
+**/*.pyo
+**/*.pyd
+**/.Python
+**/env/
+**/venv/
+**/pip-log.txt
+**/pip-delete-this-directory.txt
+**/*.pyc
+
+# Django
+**/*.log
+**/*.pot
+**/*.pyc
+**/__pycache__/
+**/local_settings.py
+**/db.sqlite3
+**/media/
+
+**/server/*.log
+**/server/__pycache__/
+**/server/db.sqlite3
+**/server/media/
+
+# Virtual environment
+**/env/
+**/venv/
+**/*.venv
+**/*.virtualenv
+**/.env
+**/.venv/
+**/venv/
+**/ENV/
+
+# Spyder project settings
+**/.spyderproject
+**/.spyproject
+
+# Jupyter Notebook
+**/.ipynb_checkpoints
+
+# pyenv
+**/.python-version
+
+# celery beat schedule file
+**/celerybeat-schedule
+
+# SageMath parsed files
+**/*.sage.py
+
+# Environments
+**/.env
+**/.venv
+**/env/
+**/venv/
+**/ENV/
+**/env.bak/
+**/venv.bak/
+
+# JetBrains IDEs
+**/.idea/
+**/*.iml
+
+# VS Code
+**/.vscode/
