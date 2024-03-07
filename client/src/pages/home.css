@@ -4,6 +4,7 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: fit-content;
 }
 
 .hero-div {
@@ -162,7 +163,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     padding-left: 100px;
     padding-bottom: 20px;
 }
@@ -171,7 +172,7 @@
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: end;
+    align-items: flex-end;
     padding-right: 100px;
     padding-bottom: 20px;
 }
@@ -179,7 +180,7 @@
 .comment {
     display: flex;
     flex-direction: column;
-    align-items: start;
+    align-items: flex-start;
     box-shadow: 0 0 50px 0 rgba(0, 0, 0, 0.4);
     border-radius: 40px;
     padding: 30px;
@@ -208,124 +209,4 @@
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
-}
-
-footer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 100px;
-    width: 100vw;
-    background: rgb(56, 92, 98);
-    color: white;
-    line-height: 10px;
-    margin-top: 100px;
-}
-
-hr {
-    width: 80vw;
-    margin: 20px;
-    border: 0;
-    border-top: 1px solid #a9a9a9;
-}
-
-
-.footer-top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-    width: 100%;
-}
-
-.footer-left {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.footer-center {
-    padding-top: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    line-height: 20px;
-    color:rgb(221, 221, 221);
-    font-size: 20px;
-}
-
-.footer-center ul {
-    font-size: 15px;
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    row-gap: 30px;
-    column-gap: 100px;
-    flex-wrap: wrap;
-    list-style: none;
-    margin-top: 30px;
-}
-
-.footer-right {
-    padding: 20px;
-    line-height: 10px;
-}
-
-.footer-right h3 {
-    font-weight: lighter;
-}
-
-.footer-right input {
-    width: 200px;
-    height: 30px;
-    border-radius: 5px 0 0 5px;
-    padding: 5px;
-    border: 0;
-}
-
-.footer-right button {
-    width: 40px;
-    height: 40px;
-    border-radius: 0 5px 5px 0;
-    border: 0;
-    background: #92ff7a;
-    color: white;
-    font-weight: bold;
-    cursor: pointer;
-}
-
-.footer-logo {
-    display: flex;
-    gap: 10px;
-}
-
-.footer-bottom {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-evenly;
-    gap: 10px;
-    width: 100%;
-}
-
-.footer-social {
-    display: flex;
-    gap: 20px;
-}
-
-.social-icon {
-    width: 20px;
-    height: 20px;
-    padding: 8px;
-    border: 1px solid white;
-    border-radius: 100%;
-}
-
-.social-icon img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
 }
