@@ -9,6 +9,7 @@ import './App.css';
 import Navbar from './components/navbar';
 import Home from './pages/home';
 import About from './pages/about';
+import Ingredients from "./pages/ingredients";
 
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
@@ -22,6 +23,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<LogIn/>} />
         <Route path="/signup" element={<SignUp />} />
+        <Route path="/ingredients" element={<Ingredients />} />
       </Routes>
     </Router>
   );
