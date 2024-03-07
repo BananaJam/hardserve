@@ -9,7 +9,6 @@ footer {
     color: white;
     line-height: 10px;
     margin-top: 100px;
-    margin-left: -100px;
 }
 
 hr {
@@ -60,7 +59,7 @@ hr {
 
 .footer-right {
     padding: 20px;
-    line-height: 10px;
+    line-height: 30px;
 }
 
 .footer-right h3 {
@@ -76,8 +75,8 @@ hr {
 }
 
 .footer-right button {
-    width: 40px;
-    height: 40px;
+    width: 30px;
+    height: 30px;
     border-radius: 0 5px 5px 0;
     border: 0;
     background: #92ff7a;
@@ -107,8 +106,8 @@ hr {
 }
 
 .social-icon {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     padding: 8px;
     border: 1px solid white;
     border-radius: 100%;
