@@ -45,7 +45,7 @@ main {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: flex-start;
     justify-content: center;
     min-width: 100vw;
     height: 100%;
@@ -61,10 +61,10 @@ main {
     padding: 10px;
     gap: 10px;
     height:min-content;
-    width:250px;
+    width:350px;
     border: 2px solid black;
     border-radius: 20px;
-    background-color: rgb(221, 221, 221);
+    background-color: rgb(237, 237, 237);
 }
 
 .filter {
@@ -78,7 +78,8 @@ main {
 
 .filter select {
     width: 100%;
-    height: 30px;
+    height: 35px;
+    padding-left: 5px;
     border-radius: 20px;
     outline: none;
     font-size: 15px;
