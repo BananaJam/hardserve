@@ -44,7 +44,7 @@ export default function Home() {
                     <div className="icons-container">
                         {iconElements.map((element, index) => {
                             return (
-                                <div key={index} className="icons-element">
+                                <div key={index} className="icons-element h-72 w-72">
                                     <img className="icon" src={element.icon} alt="icon" />
                                     <p>{element.text}</p>
                                 </div>
@@ -77,11 +77,11 @@ export default function Home() {
 
                 <section className="green-section section">
                     <span>In order to controll the consumption of vitamins and minerals, use our food diary.</span>
-                    <button className="hero-button">Sign Up - it's Free!</button>
+                    <button className="hero-button text-black">Sign Up - it's Free!</button>
                 </section>
 
                 <section className="section" id="comment-section">
-                    <h1 className="caption">Reviews</h1>
+                    <h1 className="caption mb-10">Reviews</h1>
                     <div className="comment-left">
                         <div className="comment">
                             <div className="comment-header">

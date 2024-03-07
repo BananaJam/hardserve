@@ -1,12 +1,17 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faMagnifyingGlass } from "@fortawesome/free-solid-svg-icons";
+import { useState } from "react";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
+import MultiSelect from "../components/multiselect";
 
 import "./ingredients.css";
 
 export default function Ingredients() {
+    const [selectedVitamins, setSelectedVitamins] = useState([]);
+    const [selectedAllergies, setSelectedAllergies] = useState([]);
+
     return (
         <>
         <Navbar />
@@ -17,10 +22,11 @@ export default function Ingredients() {
             </div>
             <div className="container">
                 <div className="filters">
-                    <h2>Filters</h2>
+                    <h2 className="text-xl font-bold">Filters</h2>
                     <div className="filter">
                         <p>Category</p>
-                        <select>
+                        <select defaultValue="all">
+                            <option value="all">All</option>
                             <option>Vegetables</option>
                             <option>Fruits</option>
                             <option>Meat</option>
@@ -31,7 +37,7 @@ export default function Ingredients() {
                             <option>Spices</option>
                         </select>
                     </div>
-                    <h4>Nutrients</h4>
+                    <h4 className="text-lg">Nutrients</h4>
                     <div className="filter">
                         <p>Proteins</p>
                         <input type="number" min="0" defaultValue={0} />
@@ -59,14 +65,24 @@ export default function Ingredients() {
                     </div>
                     <div className="filter">
                         <p>Vitamins</p>
-                        <select>
-                            <option>Vitamin A</option>
-                            <option>Vitamin B</option>
-                            <option>Vitamin C</option>
-                            <option>Vitamin D</option>
-                            <option>Vitamin E</option>
-                            <option>Vitamin K</option>
-                        </select>
+                        <MultiSelect className="rounded-full" placeholder="Select" prefix="Vitamin " options={[
+                            "A", 
+                            "B", 
+                            "C", 
+                            "D", 
+                            "E", 
+                            "K"]} selected={selectedVitamins} setSelected={setSelectedVitamins} />
+                    </div>
+                    <h4 className="text-lg">Allergies</h4>
+                    <div className="filter">
+                        <p>Allergens</p>
+                        <MultiSelect className="rounded-full" placeholder="Select" options={[
+                            "Nuts", 
+                            "Milk", 
+                            "Fish", 
+                            "Meats", 
+                            "Soy", 
+                            "Citrus"]} selected={selectedAllergies} setSelected={setSelectedAllergies} />
                     </div>
                 </div>
                 <div className="ingredients">
