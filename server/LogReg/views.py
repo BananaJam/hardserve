@@ -26,11 +26,11 @@ class LoginView(APIView):
             return Response({
                 'refresh': str(refresh),
                 'access': str(refresh.access_token),
-                'message': "Користувач успішно увійшов в систему.",
+                'message': "Користувач успішно ввійшов.",
                 "user_id": user.id,
             }, status=status.HTTP_200_OK)
         else:
-            return Response({"message": "Неправильні дані."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Недійсні дані.", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 class UserRegistrationView(APIView):
@@ -40,7 +40,7 @@ class UserRegistrationView(APIView):
             if serializer.is_valid():
                 user = serializer.save()
                 return Response({"message": "Користувача успішно зареєстровано."}, status=status.HTTP_201_CREATED)
-            return Response({"message": "Реєстрація не вдалася."}, status=status.HTTP_400_BAD_REQUEST)
+            return Response({"message": "Реєстрація не вдалася.", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
 
 
 

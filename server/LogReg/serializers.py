@@ -1,18 +1,30 @@
 from rest_framework import serializers
 from django.contrib.auth import get_user_model
-
+from django.core.exceptions import ValidationError
 from django.contrib.auth import authenticate
 
 User = get_user_model()
+
 
 class LoginSerializer(serializers.Serializer):
     username = serializers.CharField()
     password = serializers.CharField(write_only=True)
     
     def validate(self, data):
-        user = authenticate(**data)
-        if not user:
-            raise serializers.ValidationError("Incorrect Credentials")
+        username = data.get('username')
+        password = data.get('password')
+        user = None
+        
+        if '@' in username:
+            try:
+                user_obj = User.objects.get(email=username)
+                username = user_obj.username
+            except User.DoesNotExist:
+                raise serializers.ValidationError("Неправильні облікові дані")
+                
+        user = authenticate(username=username, password=password)
+        if user is None:
+            raise serializers.ValidationError("Неправильні облікові дані")
         
         return {'user': user}
 
