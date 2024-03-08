@@ -16,3 +16,5 @@ class User(AbstractUser):
     age = models.IntegerField(default=20)
     height = models.DecimalField(max_digits=5, decimal_places=2, default=175)
     weight = models.DecimalField(max_digits=5, decimal_places=2, default=70)
+    is_email_verified = models.BooleanField(default=False)
+
