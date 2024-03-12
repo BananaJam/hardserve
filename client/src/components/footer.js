@@ -5,14 +5,14 @@ import { faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 export default function Footer() {
     return (
-        <footer>
+        <footer className="footer">
             <div className="footer-top">
-                <div className="flex flex-col gap-5 items-center">
-                    <div className="flex gap-2 items-center">
+                <div className="flex flex-col items-center gap-5">
+                    <div className="flex items-center gap-2">
                         <img src="/icons/logo.svg" alt="logo" />
-                        <h1 className=" text-xl font-bold">Ration</h1>
+                        <h1 className="text-xl font-bold ">Ration</h1>
                     </div>
-                    <h3 className="font-bold text-lg">+34953495098</h3>
+                    <h3 className="text-lg font-bold">+34953495098</h3>
                     <p>support@ration.agency</p>
                 </div>
                 <div className="footer-center">
@@ -47,9 +47,9 @@ export default function Footer() {
                         <img src="/icons/twitter.svg" alt="instagram" />
                     </div>
                 </div>
-                <div className="flex gap-2 items-center">
+                <div className="flex items-center gap-2">
                         <img src="/icons/logo.svg" alt="logo" />
-                        <h1 className=" text-xl font-bold">Ration</h1>
+                        <h1 className="text-xl font-bold ">Ration</h1>
                     </div>
                 <p>© 2021 Ration. All rights reserved.</p>
             </div>

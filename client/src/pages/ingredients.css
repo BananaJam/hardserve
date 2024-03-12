@@ -48,7 +48,6 @@ main {
     align-items: flex-start;
     justify-content: center;
     min-width: 100vw;
-    height: 100%;
     flex-wrap: nowrap;
 }
 
@@ -98,12 +97,23 @@ main {
 }
 
 .ingredients {
+    position: relative;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     gap: 20px;
-    width: 100%;
+    width: calc(100vw - 400px);
     height: 100%;
+}
+
+.macro-badge {
+    border: 2px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color:white;
+    font-size: 12px;
 }
