@@ -48,7 +48,6 @@ main {
     align-items: flex-start;
     justify-content: center;
     min-width: 100vw;
-    height: 100%;
     flex-wrap: nowrap;
 }
 
