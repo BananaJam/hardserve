@@ -7,7 +7,7 @@ from django.urls import reverse
 class ProductModelTest(TestCase):
     @classmethod
     def setUpTestData(cls):
-        Product.objects.create(name="testproduct", category="testcategory", proteins=10.0, fats=10.0, carbohydrates=10.0, glycemic_index=50)
+        Product.objects.create(name="testproduct", category="testcategory", proteins=10.0, fats=10.0, carbohydrates=10.0, calories=50, glycemic_index=50)
  
     def test_product_content(self):
         product = Product.objects.get(id=1)
@@ -17,6 +17,7 @@ class ProductModelTest(TestCase):
         self.assertEqual(product.proteins, 10.0)
         self.assertEqual(product.fats, 10.0)
         self.assertEqual(product.carbohydrates, 10.0)
+        self.assertEqual(product.calories, 50.0)
         self.assertEqual(product.glycemic_index, 50)
 
 
@@ -32,6 +33,7 @@ class ProductListViewTest(APITestCase):
                 proteins=10.0,
                 fats=10.0,
                 carbohydrates=10.0,
+                calories=50.0,
                 glycemic_index=50
             )
 
@@ -51,6 +53,5 @@ class ProductListViewTest(APITestCase):
         self.assertTrue('proteins' in resp.data[0])
         self.assertTrue('fats' in resp.data[0])
         self.assertTrue('carbohydrates' in resp.data[0])
+        self.assertTrue('calories' in resp.data[0])
         self.assertTrue('glycemic_index' in resp.data[0])
-
-
