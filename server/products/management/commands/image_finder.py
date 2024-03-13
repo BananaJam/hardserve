@@ -1,7 +1,7 @@
 import requests
 import os
 
-def find_image(product):
+def find_image(product, self):
     headers_image = {
         "Authorization": "PzMibJ300UkcmbCwMEC9Nda7GyFwCn1jzPT0e7HfpWd9Ht8YTGe75RTa"
     }
@@ -19,7 +19,7 @@ def find_image(product):
         data = response.json()
         if data['photos']:
             image_url = data['photos'][0]['src']['original']
-            print("Посилання на зображення помідору:", image_url)
+            print("Посилання на зображення продукту:", image_url)
         else:
             print("Зображення не знайдено.")
     else:
@@ -33,6 +33,6 @@ def find_image(product):
             os.makedirs(image_dir)
         with open(f"{image_dir}{product}.jpg", "wb") as f:
             f.write(response.content)
-        print("Image downloaded successfully.")
+        self.stdout.write(self.style.SUCCESS('Successfully image downloaded'))
     
     return f"./products/images/{product}.jpg"

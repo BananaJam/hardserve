@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
 
-        product = 'soured cream'
+        product = 'tomato'
         api_key = '339a5df078aa48f2aa831ec1413f7537'
 
         url = 'https://api.spoonacular.com/food/ingredients/search' 
@@ -26,7 +26,7 @@ class Command(BaseCommand):
 
         product_data = response.json()
 
-        product_image = find_image(product)
+        product_image = find_image(product, self)
 
         # def delete_object(id):
         #     try:
