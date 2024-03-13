@@ -9,7 +9,7 @@ class Product(models.Model):
     carbohydrates = models.DecimalField(max_digits=5, decimal_places=2)
     calories = models.DecimalField(max_digits=5, decimal_places=2)
     glycemic_index = models.IntegerField()
-    image = models.ImageField(upload_to='products/', null=True, blank=True)
+    image = models.ImageField(upload_to='products/image/', null=True, blank=True)
     # Додайте інші поля 
 
     def __str__(self):
