@@ -3,6 +3,7 @@ from django.contrib.auth.models import AbstractUser
 from django.conf import settings
 from django.utils import timezone
 import datetime
+import uuid
 
 class User(AbstractUser):
     GENDER_CHOICES = [
@@ -17,4 +18,4 @@ class User(AbstractUser):
     height = models.DecimalField(max_digits=5, decimal_places=2, default=175)
     weight = models.DecimalField(max_digits=5, decimal_places=2, default=70)
     is_email_verified = models.BooleanField(default=False)
-
+    confirmation_token = models.UUIDField(default=uuid.uuid4)
