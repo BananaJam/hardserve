@@ -6,8 +6,11 @@ class Command(BaseCommand):
     help = 'Load initial products into the database from Spoonacular API'
 
     def handle(self, *args, **kwargs):
+
+        product = 'tomato'
+
         url = 'https://api.spoonacular.com/food/ingredients/search' 
-        params = {'apiKey': '339a5df078aa48f2aa831ec1413f7537', 'query': 'tomato', 'number': '2'}
+        params = {'apiKey': '339a5df078aa48f2aa831ec1413f7537', f'query': {product}, 'number': '2'}
         response = requests.get(url, params=params)
         response.raise_for_status()
 
