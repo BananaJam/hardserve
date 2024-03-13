@@ -1,4 +1,6 @@
 import requests
+import os
+
 def find_image(product):
     headers_image = {
         "Authorization": "PzMibJ300UkcmbCwMEC9Nda7GyFwCn1jzPT0e7HfpWd9Ht8YTGe75RTa"
@@ -26,8 +28,11 @@ def find_image(product):
     response = requests.get(image_url)
 
     if response.status_code == 200:
-        with open(f"./products/image/{product}.jpg", "wb") as f:
+        image_dir = "./products/images/"
+        if not os.path.exists(image_dir):
+            os.makedirs(image_dir)
+        with open(f"{image_dir}{product}.jpg", "wb") as f:
             f.write(response.content)
         print("Image downloaded successfully.")
     
-    return f"./products/image/{product}.jpg"
+    return f"./products/images/{product}.jpg"
