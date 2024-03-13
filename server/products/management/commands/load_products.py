@@ -8,7 +8,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
 
-        product = 'tomato'
+        product = 'soured cream'
         api_key = '339a5df078aa48f2aa831ec1413f7537'
 
         url = 'https://api.spoonacular.com/food/ingredients/search' 
