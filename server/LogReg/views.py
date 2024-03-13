@@ -48,13 +48,17 @@ class UserRegistrationView(APIView):
             if serializer.is_valid():
                 user = serializer.save()
 
-                # Send confirmation email
-                send_mail(
-                    'Підтвердіть вашу електронну пошту',
-                    'Натисніть на посилання нижче, щоб підтвердити вашу електронну пошту:\nhttp://your-website.com/confirm/' + str(user.confirmation_token),
-                    'your-email@gmail.com',
-                    [user.email],
-                    fail_silently=False,
-                )
+                try:
+                    send_mail(
+                        'Підтвердіть вашу електронну пошту',
+                        'Натисніть на посилання нижче, щоб підтвердити вашу електронну пошту:\nhttp://your-website.com/confirm/' + str(user.confirmation_token),
+                        'your-email@gmail.com',
+                        [user.email],
+                        fail_silently=False,
+                    )
+                except Exception as e:
+                    return Response({"message": "Помилка при відправці електронної пошти.", "error": str(e)}, status=status.HTTP_500_INTERNAL_SERVER_ERROR)
 
                 return Response({"message": "Користувач успішно зареєстрований. Будь ласка, підтвердіть вашу електронну пошту."}, status=status.HTTP_201_CREATED)
+            else:
+                return Response({"message": "Недійсні дані.", "errors": serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
