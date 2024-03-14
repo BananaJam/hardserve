@@ -1,6 +1,6 @@
 import requests
 from django.core.management.base import BaseCommand
-from products.models import Product
+from products.models import Product, Nutriens, Product_Nutriens
 from .image_finder import find_image
 
 class Command(BaseCommand):
@@ -12,7 +12,7 @@ class Command(BaseCommand):
         api_key = '339a5df078aa48f2aa831ec1413f7537'
 
         url = 'https://api.spoonacular.com/food/ingredients/search' 
-        params = {'apiKey': api_key, f'query': {product}, 'number': '2'}
+        params = {'apiKey': api_key, f'query': {product}, 'number': '1'}
         response = requests.get(url, params=params)
         response.raise_for_status()
         
@@ -26,20 +26,11 @@ class Command(BaseCommand):
 
         product_data = response.json()
 
-        product_image = find_image(product, self)
-
-        # def delete_object(id):
-        #     try:
-        #         obj = Product.objects.get(id=id)
-        #         obj.delete()
-        #     except Product.DoesNotExist:
-        #         print("Object with id {} does not exist".format(id))
-
-        # delete_object(16)
-
         if Product.objects.filter(name=product_data['name']).exists():
             self.stdout.write(self.style.WARNING('Products already loaded into the database'))
             return
+
+        product_image = find_image(product, self)
 
         if len(product_data['categoryPath']) == 2:
             n = 1
@@ -50,28 +41,19 @@ class Command(BaseCommand):
         else: 
             category = '——'  
 
-        def find_nutrient(nutrients, name):
-            for nutrient in nutrients:
-                if nutrient['name'] == name:
-                    return nutrient['amount']
-            return None
+        product = Product.objects.create(
+            name=product_data['name'],  
+            category=category,
+            glycemic_index=product_data['nutrition']['properties'][0]['amount'], 
+            image=product_image,
+        )
 
-        proteins = find_nutrient(product_data['nutrition']['nutrients'], 'Protein')
-        fats = find_nutrient(product_data['nutrition']['nutrients'], 'Fat')
-        carbs = find_nutrient(product_data['nutrition']['nutrients'], 'Carbohydrates')
-        cal = find_nutrient(product_data['nutrition']['nutrients'], 'Calories')
-
-        product = {
-            'name': product_data['name'],  
-            'category': category,  
-            'proteins': proteins,  
-            'fats': fats,  
-            'carbohydrates': carbs,
-            'calories': cal,
-            'glycemic_index': product_data['nutrition']['properties'][0]['amount'],  
-            'image': product_image
-        }
-        Product.objects.create(**product)
-
+        for nutrient in product_data['nutrition']['nutrients']:
+            nutrient_obj, _ = Nutriens.objects.get_or_create(name=nutrient['name'], unit=nutrient['unit'])
+            Product_Nutriens.objects.create(
+                product=product,
+                nutrient=nutrient_obj,
+                amount=nutrient['amount']
+            )
 
         self.stdout.write(self.style.SUCCESS('Successfully loaded products into the database'))
