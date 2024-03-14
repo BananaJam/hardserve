@@ -1,26 +1,17 @@
 import React, {useState} from 'react';
 import {EyeInvisibleOutlined, EyeOutlined} from "@ant-design/icons";
-import { NavLink } from "react-router-dom";
 
 import "../css/style.css";
 
 import Google from '../img/google.svg';
 import Facebook from '../img/facebook.svg';
-import Hide from '../img/hide.svg';
 
 const SignUp = (
 ) => {
 
     // SHOW/HIDE
 
-    const [password, setPassword] = useState('');
     const [visible, setVisible] = useState(false);
-
-    const [selectedGender, setSelectedGender] = useState('');
-
-    const handleGenderChange = (event) => {
-    setSelectedGender(event.target.value);
-    };
 
     const [rulesChecked, setRulesChecked] = useState(false);
     return ( 

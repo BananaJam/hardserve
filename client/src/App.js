@@ -4,14 +4,14 @@ import {
   Route,
 } from "react-router-dom";
 
-import Navbar from './components/navbar';
+import './App.css';
+
 import Home from './pages/home';
 import About from './pages/about';
 import Ingredients from "./pages/ingredients";
 
 import LogIn from "./components/LogIn/LogIn";
 import SignUp from "./components/SignUp/SignUp";
-import Navbar from "./components/LogIn/Navbar";
 
 function App() {
   return (

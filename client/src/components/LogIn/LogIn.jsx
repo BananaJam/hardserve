@@ -15,7 +15,6 @@ const LogIn = () => {
 
   // SHOW/HIDE
 
-  const [password, setPassword] = useState('');
   const [visible, setVisible] = useState(false);
 
 
@@ -43,7 +42,7 @@ const LogIn = () => {
             errors.password = "The field is empty";
         }
         return errors;
-     };
+    };
 
     const handleChange = (e) => {
         setInputFields({ ...inputFields, [e.target.name]: e.target.value });
@@ -58,11 +57,11 @@ const LogIn = () => {
     const finishSubmit = () => {
         console.log(inputFields);
       };
-      useEffect(() => {
-        if (Object.keys(errors).length === 0 && submitting) {
-          finishSubmit();
-        }
-      }, [errors]);
+    useEffect(() => {
+      if (Object.keys(errors).length === 0 && submitting) {
+        finishSubmit();
+      }
+    });
 
 
     return ( 
@@ -103,7 +102,7 @@ const LogIn = () => {
               </div>
 
               <div className="input validate-input">
-                <input className="input100" type="password" placeholder="Password" 
+                <input className="input100" placeholder="Password" 
                 name="password"
                 value={inputFields.password}
                 type={visible ? "text" : "password"}
@@ -164,7 +163,7 @@ const LogIn = () => {
             {/* </div> */}
           
         </div>
-     );
+    );
 }
- 
+
 export default LogIn;

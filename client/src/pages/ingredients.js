@@ -104,7 +104,7 @@ export default function Ingredients() {
     return (
         <div className="flex flex-col">
         <Navbar />
-        <main>
+        <main className="flex flex-col items-center">
             <div className="search-bar">
                 <input onChange={(e) => {setSearch(e.target.value)}} type="text" />
                 <button><FontAwesomeIcon icon={ faMagnifyingGlass } /></button>
@@ -174,7 +174,7 @@ export default function Ingredients() {
                             "Citrus"]} selected={selectedAllergies} setSelected={setSelectedAllergies} />
                     </div>
                 </div>
-                <Pagination itemsPerPage={100}>{
+                <Pagination itemsPerPage={20}>{
                     filteredIngredients.map((ingredient, index) => (
                             <IngredientCard key={index} ingredient={ingredient} />
                         )
