@@ -11,8 +11,9 @@ main {
     display: flex;
     width: 30vw;
     height: 40px;
-    border-radius: 50px;
-    border: 2px solid black;
+    border-radius: 14px;
+    border: 1.5px solid black;
+    opacity: 80%;
     padding: 2px 10px 2px 10px;
     margin: 20px;
     font-size: 20px;
@@ -24,7 +25,8 @@ main {
     height: 100%;
     border: none;
     outline: none;
-    font-size: 20px;
+    background-color: transparent;
+    font-size: 18px;
 }
 
 .search-bar button {
@@ -34,7 +36,7 @@ main {
     border: none;
     background: transparent;
     color: black;
-    font-size: 20px;
+    font-size: 18px;
     font-weight: bold;
     cursor: pointer;
     white-space: nowrap;
@@ -60,10 +62,11 @@ main {
     padding: 10px;
     gap: 10px;
     height:min-content;
-    width:350px;
-    border: 2px solid black;
-    border-radius: 20px;
-    background-color: rgb(237, 237, 237);
+    width: 350px;
+    border: 1.5px solid black;
+    border-radius: 14px;
+    background-color: transparent;
+    opacity: 70%;
 }
 
 .filter {
@@ -79,20 +82,20 @@ main {
     width: 100%;
     height: 35px;
     padding-left: 5px;
-    border-radius: 20px;
+    border-radius: 14px;
     outline: none;
     font-size: 15px;
-    border: 2px solid black;
+    border: 1.5px solid black;
 }
 
 .filter input {
     width: 60px;
     height: 30px;
     padding: 0 10px 0 10px;
-    border-radius: 20px;
+    border-radius: 14px;
     outline: none;
     font-size: 15px;
-    border: 2px solid black;
+    border: 1.5px solid black;
     margin-left: auto;
 }
 
@@ -108,12 +111,46 @@ main {
     height: 100%;
 }
 
-.macro-badge {
-    border: 2px solid rgb(195, 195, 195);
+.macro-badge-purple {
+    border: 1px solid #4F5AA8;
     border-radius: 5px;
     padding-left: 5px;
     padding-right: 5px;
     font-weight: bold;
-    color:white;
+    color:#4F5AA8;
     font-size: 12px;
+}
+
+
+.macro-badge-green{
+    border: 1px solid #2C5D63;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color:#2C5D63;
+    font-size: 12px;
+}
+
+.macro-badge-d-green{
+    border: 1px solid #42b883;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color:#42b883;
+    font-size: 12px;
+}
+
+.macro-badge-brown{
+    border: 1px solid #ff7e67;
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color:#ff7e67;
+    font-size: 12px;
+}
+.border-1-5 {
+    border: 1.5px solid;
 }
