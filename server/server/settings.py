@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
+    "social_django",#add
+  #  "mainApp"#add
 ]
 
 MIDDLEWARE = [
@@ -50,6 +52,7 @@ MIDDLEWARE = [
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
     "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
+       'social_django.middleware.SocialAuthExceptionMiddleware',#add this 
 ]
 
 
@@ -73,6 +76,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                 "social_django.context_processors.backends"#add
             ],
         },
     },
@@ -132,3 +136,18 @@ STATIC_URL = "static/"
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
+
+# socail custom settings
+AUTHENTIFICATION_BACKENDS={
+    "social_core.backends.google.GoogleOAuth2",
+    "django.contrib.auth.backends.ModelBackend"
+
+}
+LOGIN_URL='login'
+LOGIN_REDIRECT_URL='home'
+LOGOUT_URL='logout'
+LOGOUT_REDIRECT_URL='login'
+
+
+SOCIAL_AUTH_GOOGLE_OAUTH_KEY="https://608674527296-s92fc4ula5e53o7bp5b6op6m65vsn86o.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH_SECRET="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"
