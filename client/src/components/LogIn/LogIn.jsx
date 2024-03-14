@@ -9,7 +9,7 @@ import Facebook from '../img/facebook.svg';
 import mail from '../img/mail.svg';
 
 
-const LogIn = () => {
+const LogIn = () => { 
 
   const [rulesChecked, setRulesChecked] = useState(false);
 
