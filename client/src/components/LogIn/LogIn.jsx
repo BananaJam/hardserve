@@ -7,7 +7,6 @@ import "../css/style.css";
 import Google from '../img/google.svg';
 import Facebook from '../img/facebook.svg';
 import mail from '../img/mail.svg';
-import Hide from '../img/hide.svg';
 
 
 const LogIn = () => {
