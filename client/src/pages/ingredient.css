@@ -1,0 +1,10 @@
+.macro-badge-big {
+    border: 2px solid rgb(195, 195, 195);
+    border-radius: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    font-weight: bold;
+    color:white;
+    font-size: 17px;
+    height: min-content;
+}
