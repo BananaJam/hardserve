@@ -498,6 +498,17 @@ body {
     height: 100vh;
 }
 
+.light-flourish-body-1 {
+  width: 100%;
+  text-align: center;
+  background-color: #FFFFFF;
+  background-position: right bottom;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  padding-top: 70px;
+  height: 100vh;
+}
+
 .iframe {
     display: none;
     visibility: hidden;
