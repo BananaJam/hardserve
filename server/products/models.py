@@ -7,6 +7,26 @@ class Product(models.Model):
     glycemic_index = models.IntegerField()
     image = models.ImageField(upload_to='products/image/', null=True, blank=True)
 
+    @property
+    def proteins(self):
+        protein = self.product_nutrients.filter(nutrient__name='Protein').first()
+        return protein.amount if protein else None
+
+    @property
+    def carbs(self):
+        carb = self.product_nutrients.filter(nutrient__name='Carbohydrates').first()
+        return carb.amount if carb else None
+
+    @property
+    def fats(self):
+        fat = self.product_nutrients.filter(nutrient__name='Fat').first()
+        return fat.amount if fat else None
+    
+    @property
+    def calories(self):
+        calories = self.product_nutrients.filter(nutrient__name='Calories').first()
+        return calories.amount if calories else None
+
     def __str__(self):
         return self.name
     
