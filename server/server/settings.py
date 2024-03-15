@@ -38,8 +38,8 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "corsheaders",
-    "social_django",#add
-  #  "mainApp"#add
+   'social_django',#add
+     'mainApp'#add
 ]
 
 MIDDLEWARE = [
@@ -95,6 +95,15 @@ DATABASES = {
     }
 }
 
+# SOCIAL_AUTH_PIPELINE = (
+#     'social_core.pipeline.social_auth.social_details',
+#     'social_core.pipeline.social_auth.social_uid',
+#     'social_core.pipeline.social_auth.auth_allowed',
+#     'social_core.pipeline.social_auth.social_user',
+#     'social_core.pipeline.social_auth.associate_user',
+#     'social_core.pipeline.social_auth.load_extra_data',
+#     'social_core.pipeline.user.user_details',
+# )
 
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
@@ -138,16 +147,16 @@ STATIC_URL = "static/"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 # socail custom settings
-AUTHENTIFICATION_BACKENDS={
-    "social_core.backends.google.GoogleOAuth2",
-    "django.contrib.auth.backends.ModelBackend"
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'social_core.backends.google.GoogleOAuth2',
+]
 
-}
 LOGIN_URL='login'
 LOGIN_REDIRECT_URL='home'
 LOGOUT_URL='logout'
 LOGOUT_REDIRECT_URL='login'
 
 
-SOCIAL_AUTH_GOOGLE_OAUTH_KEY="https://608674527296-s92fc4ula5e53o7bp5b6op6m65vsn86o.apps.googleusercontent.com"
-SOCIAL_AUTH_GOOGLE_OAUTH_SECRET="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"
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY="608674527296-s92fc4ula5e53o7bp5b6op6m65vsn86o.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET="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"
