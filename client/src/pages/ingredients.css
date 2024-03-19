@@ -116,4 +116,5 @@ main {
     font-weight: bold;
     color:white;
     font-size: 12px;
+    height: min-content;
 }
