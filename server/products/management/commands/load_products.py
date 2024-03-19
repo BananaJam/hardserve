@@ -2,13 +2,14 @@ import requests
 from django.core.management.base import BaseCommand
 from products.models import Product, Nutriens, Product_Nutriens
 from .image_finder import find_image
+import json
 
 class Command(BaseCommand):
     help = 'Load initial products into the database from Spoonacular API'
 
     def handle(self, *args, **kwargs):
 
-        product = 'tomato'
+        product = 'potato'
         api_key = '339a5df078aa48f2aa831ec1413f7537'
 
         url = 'https://api.spoonacular.com/food/ingredients/search' 
@@ -48,12 +49,15 @@ class Command(BaseCommand):
             image=product_image,
         )
 
-        for nutrient in product_data['nutrition']['nutrients']:
-            nutrient_obj, _ = Nutriens.objects.get_or_create(name=nutrient['name'], unit=nutrient['unit'])
-            Product_Nutriens.objects.create(
-                product=product,
-                nutrient=nutrient_obj,
-                amount=nutrient['amount']
-            )
+        categories = ['nutrients', 'properties', 'flavonoids']
+
+        for category in categories:
+            for item in product_data['nutrition'][category]:
+                nutrient_obj, _ = Nutriens.objects.get_or_create(name=item['name'], unit=item['unit'])
+                Product_Nutriens.objects.create(
+                    product=product,
+                    nutrient=nutrient_obj,
+                    amount=item['amount']
+                )
 
         self.stdout.write(self.style.SUCCESS('Successfully loaded products into the database'))
