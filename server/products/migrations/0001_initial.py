@@ -21,6 +21,7 @@ class Migration(migrations.Migration):
                 ('proteins', models.DecimalField(decimal_places=2, max_digits=5)),
                 ('fats', models.DecimalField(decimal_places=2, max_digits=5)),
                 ('carbohydrates', models.DecimalField(decimal_places=2, max_digits=5)),
+                ('calories', models.DecimalField(decimal_places=2, max_digits=5)),
                 ('glycemic_index', models.IntegerField()),
                 ('image', models.ImageField(blank=True, null=True, upload_to='products/')),
             ],

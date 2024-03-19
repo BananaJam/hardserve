@@ -40,6 +40,7 @@ client/yarn-error.log*
 **/*.log
 **/*.pot
 **/*.pyc
+**/*.jpg
 **/__pycache__/
 **/local_settings.py
 **/db.sqlite3
