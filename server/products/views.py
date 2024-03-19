@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.generics import ListAPIView
 from .models import Product, Nutriens, Product_Nutriens
 from products.serializers import ProductSerializer, NutriensSerializer, ProductNutriensSerializer
+from django.http import FileResponse,  JsonResponse
 
 class ProductListView(ListAPIView):
     queryset = Product.objects.all()
@@ -42,3 +43,12 @@ class ProductNutriensListView(ListAPIView):
             'product_nutriens': response.data,
         }
         return response
+
+def GetImageByName(request, image_name):
+    image_path = f"./products/images/{image_name}"
+    try:
+        image_file = open(image_path, 'rb')
+    except FileNotFoundError:
+        return JsonResponse({'error': 'Image not found'}, status=404)
+
+    return FileResponse(image_file)
