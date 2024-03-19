@@ -45,7 +45,6 @@ class Command(BaseCommand):
         product = Product.objects.create(
             name=product_data['name'],  
             category=category,
-            glycemic_index=product_data['nutrition']['properties'][0]['amount'], 
             image=product_image,
         )
 

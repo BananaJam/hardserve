@@ -4,8 +4,12 @@ class Product(models.Model):
     name = models.CharField(max_length=255)
     category = models.CharField(max_length=255, null=True)
     short_description = models.TextField(blank=True, null=True)
-    glycemic_index = models.IntegerField()
     image = models.ImageField(upload_to='products/image/', null=True, blank=True)
+
+    @property
+    def glycemic_index(self):
+        glycemic_index = self.product_nutrients.filter(nutrient__name='Glycemic Index').first()
+        return glycemic_index.amount if glycemic_index else 0
 
     @property
     def proteins(self):
