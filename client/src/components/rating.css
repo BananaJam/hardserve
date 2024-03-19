@@ -1,0 +1,14 @@
+.checked {
+    color: rgb(255, 217, 0);
+}
+
+.rating_container {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    height: min-content;
+    width: fit-content;
+    font-size: 25px;
+    font-weight: bold;
+    text-align: center;
+}
