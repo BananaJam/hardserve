@@ -6,6 +6,7 @@ import datetime
 import uuid
 
 class User(AbstractUser):
+    search_fields = ('username', 'email')
     GENDER_CHOICES = [
         ('Male', 'male'),
         ('Female', 'female'),
