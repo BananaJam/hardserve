@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'LogReg',
     'rest_framework',
     'rest_framework.authtoken',
+    'social_django',
 ]
 
 REST_FRAMEWORK = {
@@ -60,6 +61,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware',#add
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -75,6 +77,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends'#add
             ],
         },
     },
@@ -115,6 +118,7 @@ AUTH_PASSWORD_VALIDATORS = [
 AUTHENTICATION_BACKENDS = [
     'LogReg.backends.EmailOrUsernameModelBackend',
     'django.contrib.auth.backends.ModelBackend', 
+      'social_core.backends.google.GoogleOAuth2',
 ]
 # Internationalization
 # https://docs.djangoproject.com/en/5.0/topics/i18n/
@@ -144,3 +148,10 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'healthynutrition201@gmail.com'
 EMAIL_HOST_PASSWORD = 'jtth fwbc tktb lbuq'
+LOGIN_URL='login'
+LOGIN_REDIRECT_URL='home'
+LOGOUT_URL='logout'
+LOGOUT_REDIRECT_URL='login'
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY="608674527296-s92fc4ula5e53o7bp5b6op6m65vsn86o.apps.googleusercontent.com"
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET="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"
