@@ -44,12 +44,14 @@ INSTALLED_APPS = [
     'LogReg',
     'personal_account',
     'rest_framework',
+    'rest_framework_simplejwt',
     'rest_framework.authtoken',
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
 }
 
