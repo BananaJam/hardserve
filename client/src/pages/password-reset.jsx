@@ -13,12 +13,13 @@ export default function PasswordReset() {
             setErrors('Password must be at least 8 characters long');
             return false;
         }
+        setErrors('');
         return true;
     }
 
     function resetPassword() {
         if (validatePassword()) {
-            fetch(`http://localhost:8000/api/accounts/password-reset-confirm/${uid}/${token}/`, {
+            fetch(`http://localhost:8000/accounts/password-reset-confirm/${uid}/${token}/`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -26,7 +27,13 @@ export default function PasswordReset() {
                 body: JSON.stringify({
                     new_password: passwdRef.current.value,
                 }),
-            })
+            }).then(response => {
+                if (response.status === 200) {
+                    window.location.href = '/login';
+                } else {
+                    setErrors("Could not reset password. Please try again.");
+                }
+            });
         }
     }
 
@@ -35,9 +42,9 @@ export default function PasswordReset() {
         <main className='flex items-center justify-center bg-gray-300'>
             <div className='flex flex-col items-center max-w-full px-8 py-4 bg-gray-100 rounded-md shadow-md w-96'>
                 <h1 className='mb-4 text-2xl font-bold'>Password Reset</h1>
-                <input className='mb-1 bg-white' type="password" placeholder="New Password" />
+                <input ref={passwdRef} className='mb-1 bg-white' type="password" placeholder="New Password" />
                 <p className='mb-6 text-sm text-red-500'>{errors}</p>
-                <button onClick={resetPassword} ref={passwdRef} className='px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700'>Reset Password</button>
+                <button onClick={resetPassword} className='px-4 py-2 text-white bg-blue-500 rounded-md hover:bg-blue-700'>Reset Password</button>
             </div>
         </main>
     );
