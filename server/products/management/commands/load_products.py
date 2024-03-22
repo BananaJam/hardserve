@@ -9,8 +9,7 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
 
-        # заливати по 50-60 продуктів за раз, щоб не перевантажувати сервер 
-         
+        # заливати по 50-60 продуктів за раз, щоб не перевантажувати сервер  
         search_terms = [
             "Bread", "Milk", "Soured cream", "Egg", "Sugar", "Butter", "Salt", "Buckwheat", "Rice", "Potatoes", 
             "Flour", "Carrots", "Onions", "Cabbage", "Beets", "Apples", "Bananas", "Oranges", "Cheese", "Kefir",
