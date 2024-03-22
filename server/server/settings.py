@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'LogReg',
     'rest_framework',
     'rest_framework.authtoken',
+    'corsheaders',
 ]
 
 REST_FRAMEWORK = {
@@ -64,6 +65,10 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'server.urls'
+
+CORS_ORIGIN_WHITELIST = [
+    "http://localhost:3000",
+]
 
 TEMPLATES = [
     {
