@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {EyeInvisibleOutlined, EyeOutlined} from "@ant-design/icons";
 
 // import "./main.css";
@@ -74,6 +74,37 @@ const LogIn = () => {
             }
         })
       };
+
+      const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^\S+@\S+\.\S+$/
+          );
+      };
+
+      function PasswordReset() {
+        if (inputFields.email.length < 1) {
+            setErrors({email: "Please enter your email address"});
+            return;
+        }else if (!validateEmail(inputFields.email)) {
+            setErrors({email: "Please enter a valid email address"});
+            return;
+        }else {
+          setErrors({});
+          fetch('http://localhost:8000/accounts/password-reset/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email: inputFields.email}),
+          }).catch((error) => {
+            console.error('Error:', error);
+          }).then(response => response.json()).then(data => {
+            setStatusMessage(data.message);
+          })
+        }
+      }
 
 
     return ( 
@@ -165,7 +196,7 @@ const LogIn = () => {
           </div>
 
           {/* <div > */}
-                <a className='tx1' href="#">
+                <a onClick={PasswordReset} className='tx1'>
                     Can’t log in?
                 </a>
                 <h1 className='tx2' >
