@@ -44,26 +44,18 @@ INSTALLED_APPS = [
     'LogReg',
     'rest_framework',
     'rest_framework.authtoken',
-
-    # "django.contrib.admin",
-    # "django.contrib.auth",
-    # "django.contrib.contenttypes",
-    # "django.contrib.sessions",
-    # "django.contrib.messages",
-    # "django.contrib.staticfiles",
-
-    #=======
-   
-    'corsheaders',
-    'oauth2_provider',
-    'social_django',
+=======
+    "django.contrib.admin",
+    "django.contrib.auth",
+    "django.contrib.contenttypes",
+    "django.contrib.sessions",
+    "django.contrib.messages",
+    "django.contrib.staticfiles",
 ]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
-        'oauth2_provider.contrib.rest_framework.OAuth2Authentication',#add
-        'drf_social_oauth2.authentication.SocialAuthentication',#add
     ],
 }
 
@@ -76,7 +68,6 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     "corsheaders.middleware.CorsMiddleware",
-    
 ]
 
 ROOT_URLCONF = 'server.urls'
@@ -92,8 +83,6 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                'social_django.context_processors.backends',#add
-                'social_django.context_processors.login_redirect',#add
             ],
         },
     },
@@ -132,9 +121,7 @@ AUTH_PASSWORD_VALIDATORS = [
 ]
 
 AUTHENTICATION_BACKENDS = [
-    'social_core.backends.google.GoogleOAuth2',#add
-   ' drf_social_oauth2.backends.DjangoOAuth2',#add
-    'LogReg.backends.EmailOrUsernameModelBackend',#add 
+    'LogReg.backends.EmailOrUsernameModelBackend',
     'django.contrib.auth.backends.ModelBackend', 
 ]
 # Internationalization
@@ -165,16 +152,3 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'healthynutrition201@gmail.com'
 EMAIL_HOST_PASSWORD = 'jtth fwbc tktb lbuq'
-
-
-
-CORS_ORIGIN_ALLOW_ALL = True
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_SCOPE = [
-    'https://www.googleapis.com/auth/userinfo.email',
-    'https://www.googleapis.com/auth/userinfo.profile',
-]
-
-
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = "293319413669-gbvar9vumosc46vqe84lr7qlbqqikfrs.apps.googleusercontent.com"
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = "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"
