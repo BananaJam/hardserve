@@ -10,5 +10,3 @@ urlpatterns = [
 
 ]
 
-#https://medium.com/@ronakchitlangya1997/social-authentication-email-using-django-and-react-js-e1cc8456262d
-
