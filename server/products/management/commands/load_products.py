@@ -9,6 +9,8 @@ class Command(BaseCommand):
 
     def handle(self, *args, **kwargs):
 
+        # заливати по 50-60 продуктів за раз, щоб не перевантажувати сервер 
+         
         search_terms = [
             "Bread", "Milk", "Soured cream", "Egg", "Sugar", "Butter", "Salt", "Buckwheat", "Rice", "Potatoes", 
             "Flour", "Carrots", "Onions", "Cabbage", "Beets", "Apples", "Bananas", "Oranges", "Cheese", "Kefir",
@@ -17,19 +19,19 @@ class Command(BaseCommand):
             "Garlic", "Pork", "Beef", "Chicken", "Salmon", "Tuna", "Soy sauce", "Black pepper",
             "Leeks", "Bell peppers", "Horseradish", "Olive oil", "Orange juice", "Lemons", "Cinnamon",
             "Blackcurrants", "Currants", "Strawberries", "Raspberries", "Pasta", "Ketchup", "Bay leaf",
-            # "Chili peppers", "Lard", "Mayonnaise", "Wheat products", "Vegetable broth", "Sea salt",
-            # "Smoked cheese", "Onion flakes", "Margarine", "Chicken fillet", "Turkey", "Chicken legs",
+            # "Chili peppers", "Lard", "Mayonnaise", "Sea salt", "Margarine", "Chicken fillet", "Turkey", "Chicken legs",
             # "Sour cream", "Parsley", "Coriander", "Cumin", "Cardamom", "Cloves", "Grapes", "Grape juice",
             # "Capers", "Sausage", "Ham", "Pumpkin", "Lettuce leaves", "Green onions", "Shrimp", "Mussels",
-            # "Crab meat", "Shellfish", "French fries", "Green peas", "Sesame seeds", "Paprika", "Black tea",
-            # "Pu-erh tea", "Coconut milk", "Lavender", "Butter cream", "Sesame oil", "Turmeric", "Carrot",
+            # "Crab meat", "Shellfish", "French fries", "Green peas", "Sesame seeds", "Paprika", "Black tea", 
+            # "Coconut", "Lavender", "Butter cream", "Sesame oil", "Turmeric", "Carrot",
             # "Watermelon", "Grapefruit", "Cranberries", "Spinach", "Dark chocolate", "Beans", "Cottage cheese"
         ]
         # api_key = '339a5df078aa48f2aa831ec1413f7537'
         # api_key = '60c5617260b84b1fb7ba939f0cdad2a6'
         # api_key = 'dbb41dcdd4ef4c6dacfd8e6c9b1db54c'
         # api_key = 'e258317c18264d14ba91f8f215d80f62'
-        api_key = '87f459c41b2542809173f185926cec62'
+        # api_key = '87f459c41b2542809173f185926cec62'
+        api_key = '42d94788e6dd4b2c81ee247449c38820'
 
         for product in search_terms:
 
