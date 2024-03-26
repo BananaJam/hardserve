@@ -11,8 +11,8 @@ import "./ingredients.css";
 
 function IngredientCard({ingredient}){
     return (
-        <div className="relative flex flex-col items-center px-2 py-4 bg-transparent bg-gray-200 cursor-pointer w-60 rounded-xl" onClick={() => window.location.href += "/" + ingredient.id}>
-            <img className="mt-2 mb-4 rounded" src="https://via.placeholder.com/150" alt="Ingredient" />
+        <div className="relative flex flex-col items-center px-2 py-4 bg-transparent bg-gray-200 shadow-lg cursor-pointer w-72 rounded-xl" onClick={() => window.location.href += "/" + ingredient.id}>
+            <img className="w-full mt-2 mb-4 rounded" src="https://via.placeholder.com/150" alt="Ingredient" />
             <div className="flex items-center gap-2">
                 <h3 className="text-xl font-bold">{ingredient.name}</h3>
                 <p className="bg-transparent macro-badge-purple">{ingredient.category}</p>

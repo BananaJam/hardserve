@@ -15,10 +15,10 @@ const elements = (
             <a href="/blog">Blog</a>
         </li>
         <li>
-            <a href="/recipes">Recipe</a>
+            <a href="/recipes">Recipes</a>
         </li>
         <li>
-            <a href="/ingredients">Recipe</a>
+            <a href="/ingredients">Ingredients</a>
         </li>
         <li>
             <a href="/login" className="login-button">Log In</a>
