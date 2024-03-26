@@ -153,4 +153,5 @@ main {
 }
 .border-1-5 {
     border: 1.5px solid;
+    height: min-content;
 }

@@ -27,13 +27,13 @@ export default function Footer() {
 
                 <div className="footer-right">
                     <h3>Subscribe to our newsletter</h3>
-                    <input type="text" placeholder="Enter your email" />
+                    <input className="mt-2 text-black bg-white" type="text" placeholder="Enter your email" />
                     <button><FontAwesomeIcon icon={faArrowRight} /></button>
                 </div>
                 
             </div>
 
-            <hr />
+            <hr className="my-4" />
 
             <div className="footer-bottom">
                 <div className="footer-social">

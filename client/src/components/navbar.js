@@ -29,7 +29,7 @@ const elements = (
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <nav>
+        <nav id="nav">
             <div className="logo-section">
                 <img src="/icons/logo.svg" alt="logo" className="logo" />
                 <h1><a href="/" className="logo-text">Ration</a></h1>
