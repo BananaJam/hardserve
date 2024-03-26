@@ -11,24 +11,24 @@ import "./ingredients.css";
 
 function IngredientCard({ingredient}){
     return (
-        <div className="relative flex flex-col items-center p-4 bg-white border-2 rounded-xl">
+        <div className="relative flex flex-col items-center p-4 bg-transparent rounded-xl">
             <img className="mt-2 mb-4 rounded" src="https://via.placeholder.com/150" alt="Ingredient" />
             <div className="flex items-center gap-2">
                 <h3 className="text-xl font-bold">{ingredient.name}</h3>
-                <p className="bg-orange-500 macro-badge">{ingredient.category}</p>
+                <p className="bg-transparent macro-badge-purple">{ingredient.category}</p>
             </div>
             <div className="p-2 macros">
                 <div className="flex gap-2">
-                    <p className="bg-green-400 macro-badge">P: {ingredient.proteins}g</p>
-                    <p className="macro-badge bg-sky-400">F: {ingredient.fats}g</p>
-                    <p className="macro-badge bg-amber-300">C: {ingredient.carbs}g</p>
+                    <p className="bg-transparent macro-badge-green">P: {ingredient.proteins}g</p>
+                    <p className="macro-badge-d-green bg-transparent">F: {ingredient.fats}g</p>
+                    <p className="macro-badge-brown bg-transparent">C: {ingredient.carbs}g</p>
                 </div>
                 <div className="flex justify-center gap-2 pt-2">
-                    <p className="macro-badge bg-violet-400">Fiber: {ingredient.fiber}g</p>
-                    <p className="macro-badge bg-fuchsia-400">Calories: {ingredient.calories}kcal</p>
+                    <p className="macro-badge-purple bg-transparent">Fiber: {ingredient.fiber}g</p>
+                    <p className="macro-badge-green bg-transparent">Calories: {ingredient.calories}kcal</p>
                 </div>
             </div>
-            <div className="w-full p-2 bg-gray-200 rounded-lg shadow-inner">
+            <div className="w-full p-2 bg-transparent border-2 border-b-indigo-500 border-t-transparent border-r-transparent border-l-transparent">
                 <p>Vitamins: {ingredient.vitamins?.join(", ")}</p>
                 <p>Allergens: {ingredient.allergens?.join(", ")}</p>
             </div>
