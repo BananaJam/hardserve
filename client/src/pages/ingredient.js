@@ -28,11 +28,12 @@ const demoIngredients = [
 
 function RecipeCard({recipe}) {
     return (
-        <div className="flex flex-col items-center gap-2 p-2 bg-gray-200 rounded-lg shadow-lg">
+        <div className="flex flex-col gap-2 p-2 ">
             <img className="rounded-lg" src={recipe.imgSrc} alt="Recipe" />
             <div>
-                <h4 className="text-lg font-bold">{recipe.name}</h4>
+                <h4 className="text-lg font-medium text-gray-600">{recipe.name}</h4>
                 <p>{recipe.description}</p>
+                <button type="button" class="bg-green-300 hover:bg-green-200 text-green-900 font-medium py-2 px-4 rounded-full text-xs">VIEW ALL</button>
             </div>
         </div>
     )
@@ -40,11 +41,12 @@ function RecipeCard({recipe}) {
 
 function IngredientCard({product}) {
     return (
-        <div className="flex flex-col items-center gap-2 p-2 bg-gray-200 rounded-lg shadow-lg">
+        <div className="flex flex-col gap-2 p-2">
             <img className="rounded-lg" src={product.imgSrc} alt="Product" />
             <div>
-                <h4 className="text-lg font-bold">{product.name}</h4>
+                <h4 className="text-lg font-medium text-gray-600">{product.name}</h4>
                 <p>{product.description}</p>
+                <button type="button" class="bg-green-300 hover:bg-green-200 text-green-900 font-medium py-2 px-4 rounded-full text-xs">VIEW ALL</button>
             </div>
         </div>
     )
@@ -56,59 +58,62 @@ export default function Ingredient() {
     return (
         <>
         <Nav />
-        <div className="flex justify-center ">
-            <div className="relative flex flex-col items-center my-16 bg-white border-2 shadow-xl w-[80vw] min-w-fit rounded-xl">
-                <div className="flex flex-col items-center w-full md:items-start md:flex-row h-fit">
-                    <img className="object-contain m-2 rounded h-96" src="https://via.placeholder.com/150" alt="Ingredient" />
+        <div className="flex justify-center bg-[#fefdfd]">
+            <div className="relative flex flex-col items-center ">
+                <div className="flex flex-col items-center w-full md:items-start md:flex-row h-fit bg-white border-2 my-16 shadow-sm w-[80vw] min-w-fit rounded-xl p-10 gap-10">
+                    <img className="object-contain m-2 rounded-xl h-96" src="https://via.placeholder.com/150" alt="Ingredient" />
                     <div className="flex flex-col items-center justify-around w-full h-96">
                         <div>
                             <div className="flex items-center gap-2">
-                                <h3 className="text-5xl font-bold">{ingredient.name}</h3>
-                                <p className="bg-orange-500 macro-badge-big">{ingredient.category}</p>
+                                <h3 className="text-5xl text-gray-600 font-medium">{ingredient.name}</h3>
+                                <p className="inline-flex items-center rounded-md bg-green-100 px-4 py-2 text-xs font-medium text-green-700 ring-1 ring-inset ring-green-50">{ingredient.category}</p>
                             </div>
-                        
+                            
                             <div className="p-2 macros">
                             <div className="flex justify-center gap-2 pt-2">
-                                    <p className="macro-badge-big bg-violet-400">Fiber: {ingredient.fiber}g</p>
-                                    <p className="macro-badge-big bg-fuchsia-400">Calories: {ingredient.calories}kcal</p>
+                                    <p className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-100">Fiber: {ingredient.fiber}g</p>
+                                    <p className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-100">Calories: {ingredient.calories}kcal</p>
                                 </div>
                                 <div className="flex justify-center gap-2 pt-2">
-                                    <p className="bg-green-400 macro-badge-big">P: {ingredient.proteins}g</p>
-                                    <p className="macro-badge-big bg-sky-400">F: {ingredient.fats}g</p>
-                                    <p className="macro-badge-big bg-amber-300">C: {ingredient.carbs}g</p>
+                                    <p className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-100">P: {ingredient.proteins}g</p>
+                                    <p className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-100">F: {ingredient.fats}g</p>
+                                    <p className="inline-flex items-center rounded-md bg-gray-100 px-4 py-2 text-xs font-medium text-gray-600 ring-1 ring-inset ring-gray-100">C: {ingredient.carbs}g</p>
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full p-2 bg-gray-200 rounded-lg shadow-inner max-w-96">
-                            <h3 className="text-2xl font-bold text-center">Nutritional Information</h3>
+                        <div className="w-full p-4 max-w-96">
+                            <h3 className="text-2xl text-gray-600 font-medium">Nutritional Information</h3>
                             <p>Product description</p>
                             <p>Vitamins: {ingredient.vitamins?.join(", ")}</p>
                             <p>Allergens: {ingredient.allergens?.join(", ")}</p>
                         </div>
                     </div>
 
-                    <div className="flex flex-row items-center gap-4 p-4 w-min md:flex-col">
-                        <FontAwesomeIcon className="h-6 hover:text-rose-500 hover:cursor-pointer" icon={faBookmark} />
-                        <FontAwesomeIcon className="h-6 hover:text-green-500 hover:cursor-pointer" icon={faScaleUnbalanced} />
+                    <div className="flex flex-row items-right gap-4 p-4 w-max md:flex-col">
+                        <FontAwesomeIcon className="h-8 hover:text-rose-500 hover:cursor-pointer" icon={faBookmark} />
+                        <FontAwesomeIcon className="h-8 hover:text-green-500 hover:cursor-pointer" icon={faScaleUnbalanced} />
                     </div>
                 </div>
 
-                <div className="p-4 w-max">
-                    <h3 className="mb-4 text-2xl font-bold text-center">Recipes with this ingredient</h3>
-                    <div className="flex flex-row flex-wrap gap-2">
-                    {RecipeCard({recipe: {name: "Recipe 1", description: "Description 1", imgSrc: "https://via.placeholder.com/150"}})}
-                    {RecipeCard({recipe: {name: "Recipe 2", description: "Description 2", imgSrc: "https://via.placeholder.com/150"}})}
-                    {RecipeCard({recipe: {name: "Recipe 3", description: "Description 3", imgSrc: "https://via.placeholder.com/150"}})}
+                <div className="flex flex-col items-center p-10 gap-10">
+                    <div className="p-4 w-max flex flex-col gap-2 p-5 bg-white rounded-lg shadow-sm">
+                        <h3 className="mb-4 text-2xl text-gray-600 font-medium">Recipes with this ingredient</h3>
+                        <div className="flex flex-row flex-wrap gap-2">
+                        {RecipeCard({recipe: {name: "Recipe 1", description: "Description 1", imgSrc: "https://via.placeholder.com/150"}})}
+                        {RecipeCard({recipe: {name: "Recipe 2", description: "Description 2", imgSrc: "https://via.placeholder.com/150"}})}
+                        {RecipeCard({recipe: {name: "Recipe 3", description: "Description 3", imgSrc: "https://via.placeholder.com/150"}})}
+                        </div>
+                    </div>
+
+                    <div className="p-4 w-max flex flex-col gap-2 p-5 bg-white  rounded-lg shadow-sm">
+                        <h3 className="mb-4 text-2xl font-medium text-gray-600">Similar ingredients</h3>
+                        <div className="flex flex-row flex-wrap gap-2">
+                        {IngredientCard({product: {name: "Product 1", description: "Description 1", imgSrc: "https://via.placeholder.com/150"}})}
+                        {IngredientCard({product: {name: "Product 2", description: "Description 2", imgSrc: "https://via.placeholder.com/150"}})}
+                        </div>
                     </div>
                 </div>
 
-                <div className="p-4 w-max">
-                    <h3 className="mb-4 text-2xl font-bold text-center">Similar ingredients</h3>
-                    <div className="flex flex-row flex-wrap gap-2">
-                    {IngredientCard({product: {name: "Product 1", description: "Description 1", imgSrc: "https://via.placeholder.com/150"}})}
-                    {IngredientCard({product: {name: "Product 2", description: "Description 2", imgSrc: "https://via.placeholder.com/150"}})}
-                    </div>
-                </div>
             </div>
         </div>
     </>
