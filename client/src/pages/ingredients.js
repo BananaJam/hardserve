@@ -11,7 +11,7 @@ import "./ingredients.css";
 
 function IngredientCard({ingredient}){
     return (
-        <div className="relative flex flex-col items-center p-4 bg-transparent cursor-pointer w-72 rounded-xl" onClick={() => window.location.href += "/" + ingredient.id}>
+        <div className="relative flex flex-col items-center px-2 py-4 bg-transparent bg-gray-200 cursor-pointer w-60 rounded-xl" onClick={() => window.location.href += "/" + ingredient.id}>
             <img className="mt-2 mb-4 rounded" src="https://via.placeholder.com/150" alt="Ingredient" />
             <div className="flex items-center gap-2">
                 <h3 className="text-xl font-bold">{ingredient.name}</h3>
@@ -28,10 +28,10 @@ function IngredientCard({ingredient}){
                     <p className="bg-transparent macro-badge-green">Calories: {ingredient.calories}kcal</p>
                 </div>
             </div>
-            <div className="w-full p-2 bg-transparent border-2 border-b-indigo-500 border-t-transparent border-r-transparent border-l-transparent">
+            {/* <div className="w-full p-2 bg-transparent border-2 border-b-indigo-500 border-t-transparent border-r-transparent border-l-transparent">
                 <p>Vitamins: {ingredient.vitamins?.join(", ")}</p>
                 <p>Allergens: {ingredient.allergens?.join(", ")}</p>
-            </div>
+            </div> */}
         </div>
     );
 }

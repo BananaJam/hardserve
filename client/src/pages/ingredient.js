@@ -81,7 +81,7 @@ export default function Ingredient() {
                             
                             <div className="p-2 macros">
                             <div className="flex justify-center gap-2 pt-2">
-                                    <p className="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-600 bg-gray-100 rounded-md ring-1 ring-inset ring-gray-100">Fiber: {ingredient.fiber}g</p>
+                                    <p className="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-600 bg-gray-100 rounded-md ring-1 ring-inset ring-gray-100">Glycemic index: {ingredient.glycemic_index}</p>
                                     <p className="inline-flex items-center px-4 py-2 text-xs font-medium text-gray-600 bg-gray-100 rounded-md ring-1 ring-inset ring-gray-100">Calories: {ingredient.calories}kcal</p>
                                 </div>
                                 <div className="flex justify-center gap-2 pt-2">
@@ -91,13 +91,13 @@ export default function Ingredient() {
                                 </div>
                             </div>
                         </div>
-                        <div className="w-full h-56 p-4 overflow-y-scroll max-w-96">
+                        <div className="w-full h-56 p-4 overflow-y-scroll min-w-fit">
                             <h3 className="text-2xl font-medium text-gray-600">Nutritional Information</h3>
                             <h4>Product description</h4>
                             <br />
-                            {ingredient.nutrients.map(nutrient => {
+                            {ingredient.nutrients.map((nutrient, index) => {
                                 return (
-                                    <div className="flex flex-row justify-between">
+                                    <div className={"flex flex-row justify-between " + (index % 2 === 0 ? "bg-gray-200" : "")}>
                                         <p>{nutrient.name}</p>
                                         <p>{nutrient.amount} {nutrient.units}</p>
                                     </div>
