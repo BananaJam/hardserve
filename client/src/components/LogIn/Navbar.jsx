@@ -25,7 +25,7 @@ const Navbar = () => {
 
 
                     <button className='btn-sign text-sign' href="#">
-                    <NavLink to="/sign" className={({isActive}) => isActive ? activeLink : normalLink}>
+                    <NavLink to="/signup" className={({isActive}) => isActive ? activeLink : normalLink}>
 
                     Create an account
 
