@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import {EyeInvisibleOutlined, EyeOutlined} from "@ant-design/icons";
 
+
+import Navbar from './Navbar';
+
 // import "./main.css";
 import "../css/style.css";
 
@@ -108,6 +111,8 @@ const LogIn = () => {
 
 
     return ( 
+      <>
+       <Navbar/>
         <div className="login">
           <div className="circle"></div>
           <h1 className="loginTitle">Log in</h1>
@@ -206,6 +211,7 @@ const LogIn = () => {
             {/* </div> */}
           
         </div>
+        </>
     );
 }
 

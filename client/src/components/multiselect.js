@@ -2,6 +2,8 @@ import { useState, useRef, useEffect } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronDown, faChevronUp, faCheck } from "@fortawesome/free-solid-svg-icons";
 
+import "../pages/ingredients.css";
+
 
 export default function MultiSelect({ options, selected, setSelected, prefix = "", placeholder, className }) {
     const [isOpen, setIsOpen] = useState(false);
@@ -49,13 +51,13 @@ export default function MultiSelect({ options, selected, setSelected, prefix = "
     });
 
     return (
-        <div ref={triggerRef} className={`bg-white p-1 px-2 w-full flex flex-col items-center border-2 border-black rounded ${className}`}>
+        <div ref={triggerRef} className={`bg-transparent p-1 px-2 w-full flex flex-col items-center border-1-5 ${className}`}>
             <div className="w-full flex text-nowrap cursor-pointer" onClick={toggle}>
                 <div className="flex overflow-clip max-w-48">{placeholderFunc()}</div>
                 <FontAwesomeIcon className="ml-auto pt-1" icon={isOpen ? faChevronUp : faChevronDown} />
             </div>
             {isOpen && (
-                <div ref={dropdownRef} className="absolute bg-white p-1 flex flex-col gap-1 -ml-1 mt-8 border-2 max-w-52 rounded">
+                <div ref={dropdownRef} className="absolute bg-white p-1 flex flex-col gap-1 -ml-1 mt-8 max-w-52">
                     {options.map((option, index) => (
                         <div className="hover:bg-gray-200 px-4 py-1 cursor-pointer" key={index} onClick={() => handleSelect(option)}>
                             <FontAwesomeIcon className={"ml-auto pt-1 mr-3 " + (selected.includes(option) ? "visible" : "invisible")} icon={faCheck} />

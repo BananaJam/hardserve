@@ -18,6 +18,9 @@ const elements = (
             <a href="/recipes">Recipe</a>
         </li>
         <li>
+            <a href="/ingredients">Recipe</a>
+        </li>
+        <li>
             <a href="/login" className="login-button">Log In</a>
         </li>
     </>
