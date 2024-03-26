@@ -11,21 +11,21 @@ import "./ingredients.css";
 
 function IngredientCard({ingredient}){
     return (
-        <div className="relative flex flex-col items-center p-4 bg-transparent rounded-xl">
+        <div className="relative flex flex-col items-center p-4 bg-transparent cursor-pointer w-72 rounded-xl" onClick={() => window.location.href += "/" + ingredient.id}>
             <img className="mt-2 mb-4 rounded" src="https://via.placeholder.com/150" alt="Ingredient" />
             <div className="flex items-center gap-2">
                 <h3 className="text-xl font-bold">{ingredient.name}</h3>
                 <p className="bg-transparent macro-badge-purple">{ingredient.category}</p>
             </div>
             <div className="p-2 macros">
-                <div className="flex gap-2">
+                <div className="flex justify-center gap-2">
                     <p className="bg-transparent macro-badge-green">P: {ingredient.proteins}g</p>
-                    <p className="macro-badge-d-green bg-transparent">F: {ingredient.fats}g</p>
-                    <p className="macro-badge-brown bg-transparent">C: {ingredient.carbs}g</p>
+                    <p className="bg-transparent macro-badge-d-green">F: {ingredient.fats}g</p>
+                    <p className="bg-transparent macro-badge-brown">C: {ingredient.carbs}g</p>
                 </div>
-                <div className="flex justify-center gap-2 pt-2">
-                    <p className="macro-badge-purple bg-transparent">Fiber: {ingredient.fiber}g</p>
-                    <p className="macro-badge-green bg-transparent">Calories: {ingredient.calories}kcal</p>
+                <div className="flex flex-wrap justify-center gap-2 pt-2">
+                    <p className="bg-transparent macro-badge-purple">Glycemic index: {ingredient.glycemic_index}</p>
+                    <p className="bg-transparent macro-badge-green">Calories: {ingredient.calories}kcal</p>
                 </div>
             </div>
             <div className="w-full p-2 bg-transparent border-2 border-b-indigo-500 border-t-transparent border-r-transparent border-l-transparent">
@@ -36,70 +36,79 @@ function IngredientCard({ingredient}){
     );
 }
 
-const demoIngredients = [
-    {name: "Ingredient 1", category: "Vegetable", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 2", category: "Fruit", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 3", category: "Meat", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 4", category: "Seafood", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 5", category: "Grains", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 6", category: "Legumes", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 7", category: "Dairy", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 8", category: "Spices", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 1", category: "Vegetable", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 2", category: "Fruit", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 3", category: "Meat", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 4", category: "Seafood", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 5", category: "Grains", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 6", category: "Legumes", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 7", category: "Dairy", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-    {name: "Ingredient 8", category: "Spices", proteins: 50, fats: 20, carbs: 30, fiber: 10, calories: 100, vitamins: ["A", "B", "C"], allergens: ["Nuts", "Milk"]},
-];
+async function getIngredients(){
+    const response = await fetch("http://localhost:8000/products/", {
+        method: "GET",
+        headers: {
+            "Content-Type": "application/json"
+        }
+    });
+    const data = await response.json();
+    return data.products;
+}
 
 export default function Ingredients() {
+    const [loadedIngredients, setLoadedIngredients] = useState();
+
     const [selectedVitamins, setSelectedVitamins] = useState([]);
     const [selectedAllergies, setSelectedAllergies] = useState([]);
-    const [filteredIngredients, setFilteredIngredients] = useState(demoIngredients);
+    const [filteredIngredients, setFilteredIngredients] = useState([]);
     const [category, setCategory] = useState("all");
     const [search, setSearch] = useState("");
     const [proteins, setProteins] = useState(0);
     const [fats, setFats] = useState(0);
     const [carbs, setCarbs] = useState(0);
-    const [fiber, setFiber] = useState(0);
+    const [glycemic, setGlycemic] = useState(0);
     const [calories, setCalories] = useState(0);
 
     useEffect(() => {
-        setFilteredIngredients(demoIngredients.filter(ingredient => {
+        getIngredients().then(data => {
+            data = data.map((ingredient, index) => {
+                ingredient.id = index+1;
+                return ingredient;
+            });
+            setLoadedIngredients(data);
+            console.log(data);
+        });
+    }, []);
+
+    useEffect(() => {
+        if (loadedIngredients === undefined){
+            return;
+        }
+        setFilteredIngredients(
+            loadedIngredients.filter(ingredient => {
             if(category === "all"){
                 return true;
             }
             return ingredient.category.toLowerCase() === category.toLowerCase();
-        })
-        .filter(ingredient => {
-            return ingredient.name.toLowerCase().includes(search.toLowerCase());
-        })
-        .filter(ingredient => {
-            return ingredient.proteins >= proteins;
-        })
-        .filter(ingredient => {
-            return ingredient.fats >= fats;
-        })
-        .filter(ingredient => {
-            return ingredient.carbs >= carbs;
-        })
-        .filter(ingredient => {
-            return ingredient.fiber >= fiber;
-        })
-        .filter(ingredient => {
-            return ingredient.calories >= calories;
-        })
-        .filter(ingredient => {
-            return selectedVitamins.every(vitamin => ingredient.vitamins.includes(vitamin));
-        })
-        .filter(ingredient => {
-            return selectedAllergies.every(allergy => !ingredient.allergens.includes(allergy));
-        })
+            })
+            .filter(ingredient => {
+                return ingredient.name.toLowerCase().includes(search.toLowerCase());
+            })
+            .filter(ingredient => {
+                return ingredient.proteins >= proteins;
+            })
+            .filter(ingredient => {
+                return ingredient.fats >= fats;
+            })
+            .filter(ingredient => {
+                return ingredient.carbs >= carbs;
+            })
+            .filter(ingredient => {
+                return ingredient.glycemic_index >= glycemic;
+            })
+            .filter(ingredient => {
+                return ingredient.calories >= calories;
+            })
+            // .filter(ingredient => {
+            //     return selectedVitamins.every(vitamin => ingredient.vitamins.includes(vitamin));
+            // })
+            // .filter(ingredient => {
+            //     return selectedAllergies.every(allergy => !ingredient.allergens.includes(allergy));
+            // })
         )
-    }, [category, search, proteins, fats, carbs, fiber, calories, selectedVitamins, selectedAllergies]);
+    }, [category, search, proteins, fats, carbs, glycemic, calories, selectedVitamins, selectedAllergies, loadedIngredients]);
 
     return (
         <div className="flex flex-col">
@@ -143,8 +152,8 @@ export default function Ingredients() {
                         g/kg
                     </div>
                     <div className="filter">
-                        <p>Fiber</p>
-                        <input onChange={(e) => {setFiber(e.target.value)}} type="number" min="0" defaultValue={0} />
+                        <p>Glycemic index</p>
+                        <input onChange={(e) => {setGlycemic(e.target.value)}} type="number" min="0" defaultValue={0} />
                         g/kg
                     </div>
                     <div className="filter">
@@ -174,13 +183,13 @@ export default function Ingredients() {
                             "Citrus"]} selected={selectedAllergies} setSelected={setSelectedAllergies} />
                     </div>
                 </div>
-                <Pagination itemsPerPage={20}>{
-                    filteredIngredients.map((ingredient, index) => (
-                            <IngredientCard key={index} ingredient={ingredient} />
+                    <Pagination itemsPerPage={10}>{
+                        filteredIngredients.map((ingredient, index) => (
+                                <IngredientCard key={index} ingredient={ingredient} />
+                            )
                         )
-                    )
-                }
-                </Pagination>
+                    }
+                    </Pagination>
             </div>
             <Footer />
         </main>
