@@ -28,7 +28,7 @@ const SignUp = (
         if (inputValues.password.length < 1) {
             errors.password = "The field is empty";
         }
-        if (inputValues.confirm_password !== inputValues.password) {
+        if (inputValues.confirm_password != inputValues.password) {
             errors.confirm_password = "Passwords do not match";
         }
         if ((inputValues.height_cm.length < 1) && (inputValues.height_feet === "0" && inputValues.height_inches === "0")) {
