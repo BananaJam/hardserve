@@ -11,7 +11,6 @@ const SignUp = (
 
     const handleChange = (e) => {
         setInputFields({ ...inputFields, [e.target.name]: e.target.value });
-        setErrors(validateValues(inputFields));
     };
 
     const validateValues = (inputValues) => {
@@ -28,11 +27,16 @@ const SignUp = (
         if (inputValues.password.length < 1) {
             errors.password = "The field is empty";
         }
-        if (inputValues.confirm_password != inputValues.password) {
+        if (inputValues.confirm_password !== inputValues.password) {
             errors.confirm_password = "Passwords do not match";
         }
-        if ((inputValues.height_cm.length < 1) && (inputValues.height_feet === "0" && inputValues.height_inches === "0")) {
+        const cond1 = (inputValues.height_feet === "0") && (inputValues.height_inches === "0");
+        const cond2 = (inputValues.height_cm.length < 1);
+        if (cond1 && cond2) {
             errors.height = "The field is empty";
+        }
+        if (inputValues.gender === "") {
+            errors.gender = "Please select a gender";
         }
         if (inputValues.weight.length < 1) {
             errors.weight = "The field is empty";
@@ -41,7 +45,7 @@ const SignUp = (
     };
 
     const handleSend = (e) => {
-        let data = inputFields;
+        setStatus("");
         if (inputFields.height_feet === "0" && inputFields.height_inches === "0") {
             inputFields.height = inputFields.height_cm;
         } else {
@@ -49,11 +53,8 @@ const SignUp = (
         }
         if (inputFields.weight_unit === "Pounds") {
             inputFields.weight = inputFields.weight * 0.453592;
-        }else {
-            inputFields.weight = inputFields.weight;
         }
         e.preventDefault();
-        console.log(inputFields);
         fetch('http://localhost:8000/accounts/register/', {
             method: 'POST',
             headers: {
@@ -63,7 +64,7 @@ const SignUp = (
         })
             .then(response => response.json())
             .then(data => {
-                console.log('Success:', data);
+                setStatus(data.message);
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -88,6 +89,12 @@ const SignUp = (
         weight_unit: "",
     });
     const [errors, setErrors] = useState({});
+    const [status, setStatus] = useState("");
+
+    useEffect(() => {
+        setErrors(validateValues(inputFields));
+        console.log()
+    }, [inputFields]);
 
     return ( 
 
@@ -317,6 +324,7 @@ const SignUp = (
                             <button className='submit_sign' type='submit'>
                                 Sign Up
                             </button>
+                            <p>{status}</p>
                         </div>
                         {/* <input type="hidden" name="signup" value="true"/>
                         <input type="hidden" name="promo" id="promo-hidden" value="null"/>
@@ -325,7 +333,7 @@ const SignUp = (
                         <input type="hidden" name="gold-token" id="gold-token" value=""/> */}
                 </form>
             </body>
-     );
+    );
 }
- 
+
 export default SignUp;

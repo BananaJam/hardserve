@@ -926,3 +926,9 @@ input[type="radio"]:checked + .label {
         width: 350px;
     }
 }
+
+.error {
+    color: red;
+    font-size: 12px;
+    margin-top: -10px;
+}
