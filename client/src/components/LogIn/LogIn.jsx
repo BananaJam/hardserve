@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import {EyeInvisibleOutlined, EyeOutlined} from "@ant-design/icons";
 
-import Navbar from './Navbar';
 
+import Navbar from './Navbar';
 
 // import "./main.css";
 import "../css/style.css";
@@ -28,7 +28,7 @@ const LogIn = () => {
         password: "",
       });
       const [errors, setErrors] = useState({});
-      const [submitting, setSubmitting] = useState(false);
+      const [statusMessage, setStatusMessage] = useState("");
 
     const validateValues = (inputValues) => {
         let errors = {};
@@ -54,17 +54,60 @@ const LogIn = () => {
     const handleSubmit = (event) => {
         event.preventDefault();
         setErrors(validateValues(inputFields));
-        setSubmitting(true);
+        if (Object.keys(errors).length === 0) {
+          finishSubmit();
+        }
     };
 
     const finishSubmit = () => {
-        console.log(inputFields);
+        let data = {username: inputFields.email, password: inputFields.password};
+        fetch('http://localhost:8000/accounts/login/', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data),
+        }).catch((error) => {
+          console.error('Error:', error);
+        }).then(response => response.json()).then(data => {
+            setStatusMessage(data.message);
+            if (data.access) {
+                localStorage.setItem('access_token', data.access);
+                window.location.href = '/';
+            }
+        })
       };
-    useEffect(() => {
-      if (Object.keys(errors).length === 0 && submitting) {
-        finishSubmit();
+
+      const validateEmail = (email) => {
+        return String(email)
+          .toLowerCase()
+          .match(
+            /^\S+@\S+\.\S+$/
+          );
+      };
+
+      function PasswordReset() {
+        if (inputFields.email.length < 1) {
+            setErrors({email: "Please enter your email address"});
+            return;
+        }else if (!validateEmail(inputFields.email)) {
+            setErrors({email: "Please enter a valid email address"});
+            return;
+        }else {
+          setErrors({});
+          fetch('http://localhost:8000/accounts/password-reset/', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({email: inputFields.email}),
+          }).catch((error) => {
+            console.error('Error:', error);
+          }).then(response => response.json()).then(data => {
+            setStatusMessage(data.message);
+          })
+        }
       }
-    });
 
 
     return ( 
@@ -152,13 +195,13 @@ const LogIn = () => {
               </div>
 
             </div>
-            {Object.keys(errors).length === 0 && submitting ? (
-                        <span className="success">Successfully submitted ✓</span>
+            {statusMessage ? (
+                        <span className="success">{statusMessage}</span>
                     ) : null}
           </div>
 
           {/* <div > */}
-                <a className='tx1' href="#">
+                <a onClick={PasswordReset} className='tx1'>
                     Can’t log in?
                 </a>
                 <h1 className='tx2' >
