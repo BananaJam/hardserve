@@ -15,10 +15,10 @@ const elements = (
             <a href="/blog">Blog</a>
         </li>
         <li>
-            <a href="/recipes">Recipe</a>
+            <a href="/recipes">Recipes</a>
         </li>
         <li>
-            <a href="/ingredients">Recipe</a>
+            <a href="/ingredients">Ingredients</a>
         </li>
         <li>
             <a href="/login" className="login-button">Log In</a>
@@ -29,7 +29,7 @@ const elements = (
 export default function Navbar() {
     const [isOpen, setIsOpen] = useState(false);
     return (
-        <nav id="nav">
+        <nav id="nav" className="w-screen max-w-screen">
             <div className="logo-section">
                 <img src="/icons/logo.svg" alt="logo" className="logo" />
                 <h1><a href="/" className="logo-text">Ration</a></h1>
@@ -37,7 +37,7 @@ export default function Navbar() {
             <div className="hamburger" onClick={() => {setIsOpen(!isOpen)}}>
                 <FontAwesomeIcon icon={ faBars } />
             </div>
-            <ul className="links">
+            <ul className="ml-auto links min-w-fit max-w-fit w-fit">
                 {elements}
             </ul>
             <div className={"mobile-menu " + (isOpen ? "enabled" : "")}>
