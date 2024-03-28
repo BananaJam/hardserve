@@ -7,6 +7,7 @@ User = get_user_model()
 
 class Profile(models.Model):
     user = models.OneToOneField(get_user_model(), on_delete=models.CASCADE)
+    bio = models.TextField(null=True, blank=True)
 
     def __str__(self):
         return self.user.username
