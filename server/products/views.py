@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from rest_framework.generics import ListAPIView
-from .models import Product, Nutriens, Product_Nutriens
-from products.serializers import ProductSerializer, NutriensSerializer, ProductNutriensSerializer
+from .models import *
+from products.serializers import *
 from django.http import FileResponse,  JsonResponse
 
 class ProductListView(ListAPIView):

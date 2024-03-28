@@ -1,5 +1,5 @@
 from rest_framework import serializers
-from .models import Product, Nutriens, Product_Nutriens
+from .models import *
 
 class ProductSerializer(serializers.ModelSerializer):
     proteins = serializers.FloatField(read_only=True)
