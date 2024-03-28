@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'LogReg',
     'products',
+    'recipes',
     'rest_framework',
     'rest_framework.authtoken',
     'corsheaders',
